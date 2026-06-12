@@ -1,39 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { campsite } from "@/content/campsite.config";
 import Img from "@/components/ui/Img";
 import Reveal from "@/components/ui/Reveal";
 import Words from "@/components/ui/Words";
 
 /**
- * Story — sticky Split: links scrollen die Kapitel, rechts blendet das gepinnte
- * Kapitelbild über. Rendert NUR, wenn die Story 3+ Kapitel hat und JEDES Kapitel
- * ein eigenes Bild mitbringt (ehrliche Degradierung: sonst keine Sektion).
+ * Story — alternierende Split-Kapitel: pro Kapitel ein eigenes Bild direkt neben
+ * dem Text (Bild links/rechts im Wechsel). Rendert NUR, wenn die Story 3+ Kapitel
+ * hat und JEDES Kapitel ein eigenes Bild mitbringt (ehrliche Degradierung: sonst
+ * keine Sektion). Bilder sind im Auslieferungszustand sichtbar (opacity:1) — keine
+ * scroll-/sticky-Abhängigkeit, damit der Rhythmus auch bei statischem Render trägt.
  */
 export default function StorySection() {
   const story = campsite.story;
-  const [active, setActive] = useState(0);
-  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
-
   const chapters = story?.chapters ?? [];
   const complete = chapters.length >= 3 && chapters.every((c) => c.image?.src);
-
-  useEffect(() => {
-    if (!complete) return;
-    const els = blockRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (!els.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.idx));
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [complete]);
 
   if (!story || !complete) return null;
 
@@ -51,60 +33,29 @@ export default function StorySection() {
         </Reveal>
       </div>
 
-      {/* DESKTOP — left text scrolls, right media is pinned & cross-fades */}
-      <div className="mx-auto hidden max-w-[1320px] grid-cols-2 gap-16 px-8 lg:grid">
-        <div>
-          {chapters.map((c, i) => (
-            <div
-              key={c.no}
-              data-idx={i}
-              ref={(el) => {
-                blockRefs.current[i] = el;
-              }}
-              className="flex min-h-screen flex-col justify-center"
-            >
-              <div
-                className={`max-w-md transition-all duration-500 ${
-                  active === i ? "opacity-100" : "opacity-30"
-                }`}
-              >
-                <span className="font-display block text-5xl font-extrabold text-gold/30">{c.no}</span>
-                <h3 className="font-display mt-4 text-4xl font-bold leading-tight tracking-tight text-ink">
-                  {c.title}
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed text-muted">{c.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div>
-          <div className="sticky top-0 flex h-screen items-center">
-            <div className="relative aspect-square w-full overflow-hidden rounded-[2.2rem] bg-bg2 shadow-2xl ring-1 ring-black/5">
-              {chapters.map((c, i) => (
-                <div
-                  key={c.no}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                    active === i ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <Img src={c.image!.src} alt={c.image!.alt} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+      {/* DESKTOP — alternating text / image rows (image always visible) */}
+      <div className="mx-auto hidden max-w-[1320px] flex-col gap-24 px-8 lg:flex">
+        {chapters.map((c, i) => (
+          <Reveal key={c.no} soft>
+            <div className="grid grid-cols-2 items-center gap-16">
+              <div className={i % 2 === 1 ? "order-2" : ""}>
+                <div className="max-w-md">
+                  <span className="font-display block text-5xl font-extrabold text-gold/30">{c.no}</span>
+                  <h3 className="font-display mt-4 text-4xl font-bold leading-tight tracking-tight text-ink">
+                    {c.title}
+                  </h3>
+                  <p className="mt-4 text-lg leading-relaxed text-muted">{c.text}</p>
                 </div>
-              ))}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-5 left-6 flex items-center gap-2">
-                {chapters.map((c, i) => (
-                  <span
-                    key={c.no}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${
-                      active === i ? "w-8 bg-white" : "w-1.5 bg-white/50"
-                    }`}
-                  />
-                ))}
+              </div>
+              <div className={i % 2 === 1 ? "order-1" : ""}>
+                <div className="relative aspect-square w-full overflow-hidden rounded-[2.2rem] bg-bg2 shadow-2xl ring-1 ring-black/5">
+                  <Img src={c.image!.src} alt={c.image!.alt} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Reveal>
+        ))}
       </div>
 
       {/* MOBILE — stacked cards */}
