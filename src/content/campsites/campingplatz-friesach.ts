@@ -1,216 +1,201 @@
 import type { CampsiteConfig } from "../types";
 
-/**
- * Genusshof Friesach (vlg. Kreuzer) — Stellplatz am Bauernhof, Schützenweg 2,
- * 9360 Friesach in Kärnten. Inhaber/Betriebsleiter: Erich Krammer (2. Gastgeber: Christian).
- * Alle Texte/Fakten belegt aus campingplatz-friesach.at (Stand-Scrape 2026-06).
- * Bilder = ausschließlich eigene Hof-Fotos ("Bilder auf der Website stammen von
- * eigenen Fotografien", Impressum) in /public/campsites/campingplatz-friesach/,
- * jedes per Vision geprüft.
- *
- * EHRLICH:
- * - KEIN See am Platz → `see` weggelassen (nur ein kleiner Naturbadeteich am Hof).
- * - KEIN Grundpreis pro Nacht auf der Website → Preise = Platzhalter
- *   (pricesArePlaceholder), nur die Aufpreise Komfort +5 € / Premium +25 € sind belegt.
- * - KEIN Duschhaus (offen im Text genannt), KEINE Mobilheime/Zimmer → mobilheime/kinder/
- *   aktivitaeten weggelassen. KEINE eindeutige Auszeichnung → awards leer.
- * - KEINE expliziten Koordinaten auf der Quelle → `coords` weggelassen (Adresse zeigt).
- */
 const IMG = "/campsites/campingplatz-friesach";
 
-export const campingplatzFriesach: CampsiteConfig = {
+const campingplatzFriesach: CampsiteConfig = {
   name: "Genusshof Friesach",
   shortName: "Genusshof",
   slug: "campingplatz-friesach",
   ort: "Friesach",
   region: "Kärnten",
+  // KEIN theme-Feld — Original-Template-Palette (User-Entscheidung 2026-06-11).
+  heroVariant: "center",
   brandKind: "Stellplatz am Bauernhof",
-  regionLong: "Mittelkärnten · Friesach · Österreich",
+  regionLong: "Friesach · Mittelkärnten · Österreich",
 
-  claim: "Ruhig am Bauernhof campen – mit Burgblick über Friesach",
-  claimEmphasis: "Burgblick über Friesach",
+  claim: "Dein Stellplatz mit Hof, Sauna und Bergblick",
+  claimEmphasis: "Sauna und Bergblick",
+  emailDetail: "euer holzbefeuertes Badefass mit Blick auf die Berge",
   intro:
-    "Ein ruhiger Stellplatz für Wohnmobil, Wohnwagen, Dachzelt & Zelt auf dem Genusshof in Friesach — nur 10 individuelle Plätze mit Panoramablick auf Berge und die Burgen der ältesten Stadt Kärntens, mitten in einer kleinen Landwirtschaft mit eigener Genusshütte.",
+    "Ganzjährig geöffnet, naturnah und herzlich geführt: Bei Christian und Erich stellst du direkt am Bauernhof — mit Panoramasauna, Badefass, Naturbadeteich und einem Hofladen voller eigener Spezialitäten.",
 
   statement: {
-    text: "Bei uns ist Camping noch Landleben — ruhig, persönlich und mit allem, was vom eigenen Hof kommt.",
-    emphasis: "noch Landleben",
+    text: "Hier stellst du nicht einfach ab, sondern wirst Teil eines kleinen Bauernhofs mit Tieren, Sauna und Hofladen.",
+    emphasis: "Teil eines kleinen Bauernhofs",
   },
 
   pillars: [
     {
-      title: "Panorama & Burgenstadt",
-      text: "Individuelle Stellplätze mit weitem Blick auf Berge, Felder und die Burgen über Friesach — Ruhe inklusive.",
-      image: { src: `${IMG}/panorama-sonnenblumen.webp`, alt: "Wohnmobil am Stellplatz zwischen Sonnenblumen mit Bergpanorama über Friesach" },
+      title: "Echter Bauernhof",
+      text: "Freilandhühner, Freilandschweine und eine Gänseschar gehören hier zum Alltag — du campst mitten am lebendigen Hof.",
+      image: { src: `${IMG}/gallery-ad485e4dc2.webp`, alt: "Gänseschar auf der Weide am Genusshof Friesach" },
     },
     {
-      title: "Leben am Bauernhof",
-      text: "Eine kleine Landwirtschaft zum Mitleben: Schweine alter Rassen, Freilandhühner und Gänse haben hier viel Platz.",
-      image: { src: `${IMG}/bauernhof-schweine.webp`, alt: "Luftaufnahme des großzügigen Schweinegeheges mit alten Nutztierrassen am Genusshof" },
+      title: "Wellness-Oase",
+      text: "Panoramasauna, holzbefeuertes Badefass und ein Naturbadeteich — exklusiv für dich buchbar, mit Blick auf Berge und Schloss.",
+      image: { src: `${IMG}/gallery-b5763a6d84.webp`, alt: "Naturbadeteich mit Sauna und Badefass am Genusshof Friesach" },
     },
     {
-      title: "Die Genusshütte",
-      text: "Im Hofladen warten über 100 Eigenprodukte — von Eiern, Nudeln und Suppen bis zu Säften und Marmeladen.",
-      image: { src: `${IMG}/genusshuette.webp`, alt: "Die festlich beleuchtete Genusshütte (Hofladen) am Genusshof Friesach" },
+      title: "Ruhig am Hof",
+      text: "Ebene, naturnahe Stellplätze für Wohnmobil, Wohnwagen und Zelt — ruhig gelegen, mit weitem Blick ins Kärntner Bergland.",
+      image: { src: `${IMG}/gallery-f12217d7d3.webp`, alt: "Wohnmobil auf der Wiese mit Bergpanorama am Genusshof Friesach" },
     },
   ],
 
   usps: [
-    "Stellplatz am Bauernhof",
-    "Nur 10 individuelle Plätze",
-    "Panoramablick auf die Burgen",
     "Ganzjährig geöffnet",
+    "Panoramasauna & Badefass",
+    "Naturbadeteich",
+    "Hofladen mit Eigenprodukten",
     "Hunde willkommen",
-    "Highspeed-Internet am ganzen Hof",
+    "Highspeed-WLAN",
   ],
 
   trust: {
-    heading: "Worauf Sie sich am Genusshof verlassen können",
-    headingEmphasis: "verlassen",
+    heading: "Hier kennt man sich noch beim Namen",
+    headingEmphasis: "beim Namen",
     intro:
-      "Persönlich geführt von Erich und Christian, nur 10 ruhige Stellplätze, ehrliche Produkte vom eigenen Hof und ein Platz, der das ganze Jahr für Sie geöffnet ist — auch über Weihnachten und Silvester.",
+      "Christian und Erich führen ihren Genusshof persönlich: ein liebevoll umgestalteter Bauernhof mit Freilandtieren, exklusiver Wellness-Oase und einem Hofladen voller hausgemachter Eigenprodukte — ruhig, weltoffen und ganzjährig offen.",
   },
 
-  // Keine eindeutig belegbare Auszeichnung auf der Quelle → ehrlich leer.
   awards: [],
 
-  // Ganzjährig geöffnet (FAQ: "unser Stellplatz ist das ganze Jahr über für Sie geöffnet").
-  saison: { von: "Januar", bis: "Dezember" },
-
   hero: {
-    aerial: { src: `${IMG}/hero-stellplatz-wiese.webp`, alt: "Wohnmobil auf weiter grüner Stellplatz-Wiese am Genusshof Friesach mit Bergkulisse" },
+    aerial: { src: `${IMG}/gallery-b4964999a1.webp`, alt: "Genusshof Friesach: gepflegte Stellplätze mit Blumen und Bergblick" },
+  },
+
+  breather: {
+    image: { src: `${IMG}/hero-93168827c7.webp`, alt: "Luftaufnahme des Genusshofs Friesach" },
+    line: "Ein kleiner Hof, der ganz für dich da ist.",
   },
 
   camping: {
-    heading: "Stellplatz am Genusshof",
+    heading: "Dein Tag am Genusshof",
     intro:
-      "Großzügige, individuelle Stellplätze für Wohnmobil, Wohnwagen, Dachzelt und Zelt — jeder Platz mit eigenem Charakter und Blick ins Grüne. Ein Stellplatz = ein Fahrzeug. Hinweis zur Ehrlichkeit: Es gibt kein Duschhaus; im Sommer stehen mehrere kleine Solarduschen sowie eine Ent- und Versorgungsstation für Frisch- und Grauwasser bereit.",
+      "Vom Stellplatz zur Sauna, vom Feuerkorb zum Hofladen — bei uns hast du alles Wichtige direkt am Hof, unkompliziert und nah.",
     features: [
       {
-        title: "Individuelle Plätze",
-        text: "Nur 10 Stellplätze, jeder mit eigenem Platzerl und Weitblick — vom einfachen Basisplatz bis zum Panorama-Premium-Platz mit direktem Burgblick.",
-        image: { src: `${IMG}/stellplatz-fruehling.webp`, alt: "Wohnmobil auf einem Stellplatz mit blühenden Bäumen und Bergblick im Frühling" },
+        title: "Ebene Stellplätze",
+        text: "Naturnahe Plätze für Wohnmobil, Wohnwagen und Zelt — Strom mit 16 A, Grau- und Fäkalentsorgung direkt am Platz.",
+        image: { src: `${IMG}/gallery-bbb046b526.webp`, alt: "Wohnwagen mit Vorzelt auf ebenem Stellplatz am Genusshof Friesach" },
       },
       {
-        title: "Lagerfeuer am Platz",
-        text: "Offenes Lagerfeuer ist erlaubt: Feuertonnen stehen bereit, ein Holzkontingent können Sie gerne dazubestellen.",
-        image: { src: `${IMG}/lagerfeuer-am-platz.webp`, alt: "Wohnwagen am Stellplatz mit brennender Feuertonne in der Dämmerung" },
+        title: "Panoramasauna & Badefass",
+        text: "Heizbare Panoramasauna und ein holzbefeuertes Badefass — exklusiv buchbar, mit Blick auf die Berge rund um Friesach.",
+        image: { src: `${IMG}/gallery-b67d6035b1.webp`, alt: "Sauna-Hütte mit Badefass am Genusshof Friesach" },
       },
       {
         title: "Erholungsbereich",
-        text: "Zwischen den Christbaumkulturen laden Hängematte, Liegestühle und Hollywoodschaukel zum Entspannen — mit Highspeed-Internet überall.",
-        image: { src: `${IMG}/erholungsbereich.webp`, alt: "Luftaufnahme des Erholungsbereichs in der Christbaumkultur mit Liegestühlen und Hängematte" },
+        text: "Liegestühle und Hängematten in der Christbaumkultur laden zwischen den Bäumen zum Durchatmen ein — mit Highspeed-WLAN überall.",
+        image: { src: `${IMG}/gallery-47fa77136c.webp`, alt: "Erholungsbereich mit Sitzplatz in der Christbaumkultur am Genusshof Friesach" },
       },
       {
-        title: "Naturbadeteich",
-        text: "Ein kleiner Naturbadeteich sorgt täglich von 9 bis 18 Uhr für Abkühlung (Kinder nur unter Aufsicht).",
-        image: { src: `${IMG}/naturbadeteich.webp`, alt: "Luftaufnahme des kleinen Naturbadeteichs im Garten des Genusshofs" },
+        title: "Feuerkorb am Platz",
+        text: "Abends knistert die Feuertonne am Stellplatz — ein Kontingent Holz kannst du gerne dazu bestellen.",
+        image: { src: `${IMG}/amenity-d9a56a80db.webp`, alt: "Feuertonne am Stellplatz bei Abendstimmung am Genusshof Friesach" },
       },
       {
-        title: "Tiere zum Mitleben",
-        text: "Freilandhühner, Gänse und Schweine alter Rassen gehören zum Hof — Landleben zum Anfassen.",
-        image: { src: `${IMG}/freilandhuehner.webp`, alt: "Freilandhühner auf der grünen Wiese am Genusshof mit Bergkulisse" },
+        title: "Solardusche",
+        text: "Bei Schönwetter sorgen mehrere kleine Solaraußenduschen für eine erfrischende Abkühlung mitten im Grünen.",
+        image: { src: `${IMG}/gallery-86a752990d.webp`, alt: "Solardusche im Freien am Genusshof Friesach" },
       },
       {
-        title: "Ganzjährig geöffnet",
-        text: "Der Stellplatz ist das ganze Jahr geöffnet — auch im Winter und über die Feiertage (bitte rechtzeitig reservieren).",
-        image: { src: `${IMG}/stellplatz-winter.webp`, alt: "Verschneiter Stellplatz mit Lichterketten am Genusshof im Winter" },
+        title: "Frühstück & Abendessen",
+        text: "Frisch gekochte Speisen und Brettljausen bringen wir dir auf Vorbestellung an den Platz — einen Tag vorher Bescheid geben genügt.",
+        image: { src: `${IMG}/gallery-3be1294f20.webp`, alt: "Hausgemachte Brettljause am Genusshof Friesach" },
       },
     ],
   },
 
-  anreise: {
-    heading: "Anreise & Kontakt",
-    modes: [
+  story: {
+    kicker: "Genusshof Friesach",
+    heading: "Vom Bauernhof zum Genusshof",
+    intro: "Ein Hof, der mit viel Liebe zu einem Ort zum Ankommen wurde.",
+    chapters: [
       {
-        title: "Mit Wohnmobil & Wohnwagen",
-        text: "Schützenweg 2, 9360 Friesach in Kärnten — ruhig gelegen bei Friesach, der ältesten Stadt Kärntens, in Mittelkärnten.",
+        no: "01",
+        kicker: "Die Gastgeber",
+        title: "Herzlich empfangen",
+        text: "Christian und Erich nehmen sich Zeit für ihre Gäste — viele kommen wegen der persönlichen, unkomplizierten Gastfreundschaft immer wieder.",
+        image: { src: `${IMG}/gallery-040efa3b35.webp`, alt: "Gäste sitzen abends am Lagerfeuer beim Wohnmobil am Genusshof Friesach" },
       },
       {
-        title: "Reservierung",
-        text: "Bitte reservieren Sie Ihren Platz vor der Anreise über das Anfrage-Formular — ist ein Platz frei, erhalten Sie in wenigen Minuten eine Antwort mit Ihrer Stellplatzzuweisung.",
+        no: "02",
+        kicker: "Der Hof",
+        title: "Tiere mit viel Platz",
+        text: "Freilandhühner, Freilandschweine und Gänse: alte, fast ausgestorbene Nutztierrassen leben hier auf mehreren tausend Quadratmetern.",
+        image: { src: `${IMG}/gallery-2ebfb74868.webp`, alt: "Freilandschweine im weitläufigen Gehege am Genusshof Friesach" },
       },
       {
-        title: "Kontakt",
-        text: "Erich erreichen Sie unter +43 699 13100102, Christian unter +43 699 13100104 — auch per WhatsApp oder E-Mail.",
+        no: "03",
+        kicker: "Die Genusshütte",
+        title: "Genuss aus eigener Hand",
+        text: "In der Genusshütte findest du zahlreiche hausgemachte Spezialitäten — Eier, Nudeln, Suppen, Säfte und Marmeladen, frisch vom Hof.",
+        image: { src: `${IMG}/gallery-c673d6049b.webp`, alt: "Die Genusshütte am Genusshof Friesach" },
       },
     ],
   },
 
   galerie: {
-    heading: "Eindrücke vom Genusshof",
-    headingEmphasis: "Genusshof",
-    intro:
-      "Stellplätze mit Weitblick, Tiere am Hof, Feuerabende und die Genusshütte — ein paar Eindrücke aus Friesach, zu jeder Jahreszeit.",
-    tag: "Frühling bis Winter",
+    heading: "Vom Sommer bis in den Schnee",
+    headingEmphasis: "in den Schnee",
+    intro: "Ein kleiner Hof, der zu jeder Jahreszeit seinen Reiz hat — von blühenden Sommerwiesen bis zu verschneiten Christbäumen.",
+    tag: "Ganzjährig geöffnet",
     moreCount: 30,
     images: [
-      { src: `${IMG}/feuerschale.webp`, alt: "Große Feuerschale mit 2 m Durchmesser brennt am Abend vor der Bergkulisse" },
-      { src: `${IMG}/gaense.webp`, alt: "Freilaufende Gänse auf der saftig grünen Weide am Genusshof" },
-      { src: `${IMG}/genusshuette-jause.webp`, alt: "Reichhaltige Jause mit Eigenprodukten aus der Genusshütte am Stellplatz" },
-      { src: `${IMG}/winter-panorama.webp`, alt: "Verschneiter Stellplatz mit Blick auf die Berge rund um Friesach" },
+      { src: `${IMG}/gallery-28c597ea6c.webp`, alt: "Camper zwischen Sonnenblumen mit Blick ins Tal am Genusshof Friesach" },
+      { src: `${IMG}/gallery-63dca16542.webp`, alt: "Wohnwagen im Abendlicht unter Obstbäumen am Genusshof Friesach" },
+      { src: `${IMG}/gallery-78324c42cd.webp`, alt: "Wohnmobil unter dem Sternenhimmel am Genusshof Friesach" },
+      { src: `${IMG}/gallery-dc1b4a631e.webp`, alt: "Wohnwagen mit Liegestühlen und Bergblick am Genusshof Friesach" },
+    ],
+  },
+
+  anreise: {
+    heading: "Anfahrt nach Friesach",
+    modes: [
+      { title: "Mit dem Auto", text: "Über die S37 bis Friesach, dann den Schildern Richtung Schützenweg folgen — der Hof liegt etwas außerhalb des Zentrums." },
+      { title: "Mit der Bahn", text: "Friesach hat einen eigenen Bahnhof; vom Hof sind es nur wenige Minuten — Abholung nach Absprache." },
+      { title: "Mit dem Flugzeug", text: "Der Flughafen Klagenfurt liegt rund 45 Minuten entfernt, Salzburg gut anderthalb Stunden." },
     ],
   },
 
   booking: {
-    heading: "Verfügbarkeit & Anfrage",
-    intro:
-      "Wählen Sie Zeitraum, Platzart und Personen — wir melden uns mit Ihrer Verfügbarkeit. Hinweis: Es gibt kein Duschhaus; im Sommer stehen kleine Solarduschen sowie eine Ent- und Versorgungsstation bereit.",
-    pricesArePlaceholder: true,
+    heading: "Sichere dir deinen Platz am Genusshof",
+    headingEmphasis: "am Genusshof",
+    intro: "Sag uns Zeitraum und Personenzahl — Christian und Erich melden sich persönlich mit deiner Stellplatzzuweisung.",
+    pricesArePlaceholder: false,
     priceNote:
-      "Richtpreise: Auf der Website ist kein Grundpreis pro Nacht angegeben — der Basispreis ist ein realistischer Platzhalter (bitte mit dem Gastgeber bestätigen). Belegt sind nur die Aufpreise Komfort (+5 €) und Panorama-Premium (+25 €).",
-    highlight: {
-      title: "Panorama-Premium-Platz",
-      text: "Unser schönster Platz mit direktem Burgblick: Spüle, Solardusche, Frisch- und Grauwasseranschluss, Kühlschrank und Liegestühle — nur 1 Platz verfügbar (Aufpreis +25 €/Nacht).",
-    },
+      "Preise pro Nacht — Wohnmobil und Wohnwagen inkl. 2 Erwachsene und 1 Kind, Zelt inkl. 2 Personen. Zzgl. Strom sowie Aufpreis Komfort (€ 5) oder Panorama-Premium (€ 25). Anzahlung in Höhe der ersten Nacht.",
+    highlight: { title: "Ganzjährig geöffnet", text: "Auch über Weihnachten und Silvester — bitte rechtzeitig reservieren." },
     categories: [
-      // ACHTUNG: Basispreise sind Platzhalter (kein Grundpreis auf der Website).
-      // Reale, belegte Aufpreise: Komfort = Basis + 5 €, Panorama-Premium = Basis + 25 €.
-      { id: "basis", label: "Stellplatz Basis", perNight: 29 },
-      { id: "komfort", label: "Komfort (+5 €)", perNight: 34 },
-      { id: "premium", label: "Panorama-Premium (+25 €)", perNight: 54 },
+      { id: "wohnmobil", label: "Wohnmobil", perNight: 30, perExtraGuest: 12 },
+      { id: "wohnwagen", label: "Wohnwagen", perNight: 39, perExtraGuest: 12 },
+      { id: "zelt", label: "Zelt", perNight: 25, perExtraGuest: 12 },
     ],
   },
 
   kontakt: {
-    coords: { lat: 46.943529, lng: 14.438546 },
     tel: "+43 699 13100102",
     telHref: "tel:+4369913100102",
     mail: "info@campingplatz-friesach.at",
+    facebook: "https://facebook.com/Stellplatz.Genusshof.Friesach",
     adresse: "Schützenweg 2 · 9360 Friesach · Kärnten",
+    coords: { lat: 46.9436563, lng: 14.4388491 },
   },
 
-  languages: ["DE", "EN"],
+  languages: ["DE"],
 
   nav: [
-    {
-      label: "Stellplatz",
-      href: "#camping",
-      children: [
-        { label: "Individuelle Plätze", href: "#camping" },
-        { label: "Lagerfeuer am Platz", href: "#camping" },
-        { label: "Erholungsbereich", href: "#camping" },
-      ],
-    },
-    {
-      label: "Am Hof",
-      href: "#camping",
-      children: [
-        { label: "Tiere am Hof", href: "#camping" },
-        { label: "Naturbadeteich", href: "#camping" },
-        { label: "Genusshütte", href: "#galerie" },
-      ],
-    },
+    { label: "Hof & Wellness", href: "#camping", children: [
+      { label: "Stellplätze", href: "#camping" },
+      { label: "Sauna & Teich", href: "#camping" },
+    ]},
+    { label: "Geschichte", href: "#story" },
     { label: "Galerie", href: "#galerie" },
-    {
-      label: "Preise & Anreise",
-      href: "#booking",
-      children: [
-        { label: "Preise", href: "#booking" },
-        { label: "Anreise", href: "#anreise" },
-        { label: "Kontakt", href: "#anreise" },
-      ],
-    },
+    { label: "Preise & Anfahrt", href: "#booking", children: [
+      { label: "Preise", href: "#booking" },
+      { label: "Anfahrt", href: "#anreise" },
+    ]},
   ],
 };
 
